@@ -23,4 +23,8 @@ public class Repo implements Serializable {
     public List<Helligkeit> getListe() {
         return liste;
     }
+
+    public Helligkeit get(int index) {
+        return liste.get(index);
+    }
 }

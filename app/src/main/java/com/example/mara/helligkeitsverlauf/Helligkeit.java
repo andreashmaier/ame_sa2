@@ -7,24 +7,24 @@ import java.util.Objects;
 
 public class Helligkeit implements Serializable {
 
-    private int lux;
+    private double lux;
     private String ort;
     private Date timestamp;
 
     public Helligkeit() {
     }
 
-    public Helligkeit(int lux, String ort, Date timestamp) {
+    public Helligkeit(double lux, String ort, Date timestamp) {
         this.lux = lux;
         this.ort = ort;
         this.timestamp = timestamp;
     }
 
-    public int getLux() {
+    public double getLux() {
         return lux;
     }
 
-    public void setLux(int lux) {
+    public void setLux(double lux) {
         this.lux = lux;
     }
 
@@ -47,7 +47,7 @@ public class Helligkeit implements Serializable {
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-        return sdf.format(timestamp) + "\t" +  getOrt() + "\t" + getLux();
+        return sdf.format(timestamp) + "\t" +  getOrt() + "\n" + getLux();
     }
 
     @Override
@@ -55,7 +55,7 @@ public class Helligkeit implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Helligkeit that = (Helligkeit) o;
-        return lux == that.lux &&
+        return Double.compare(that.lux, lux) == 0 &&
                 Objects.equals(ort, that.ort) &&
                 Objects.equals(timestamp, that.timestamp);
     }
